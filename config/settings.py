@@ -105,6 +105,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Set uo django custom user model
+AUTH_USER_MODEL = 'member.member'
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/

@@ -7,3 +7,4 @@ This is Movies community web application in Django that  allows users to registe
 - Create project
 - Started app member
 - Registered member in installed app
+- Created members model

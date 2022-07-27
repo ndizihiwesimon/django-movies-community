@@ -1,4 +1,5 @@
 from datetime import datetime
+from distutils.command.upload import upload
 from django.db import models
 
 # Create your models here.
@@ -49,8 +50,9 @@ class Member(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=100, blank=False, null=False)
     last_name = models.CharField(max_length=100, blank=False, null=False)
     gender =  models.CharField( max_length=100,choices=Gender,blank=False, null=False)
-    dob = models.DateField(null=False, blank=False)
-    telephone = models.CharField(max_length=20, blank=False, null=False)
+    birthdate = models.DateField(null=False, blank=False)
+    photo = models.ImageField(upload_to='profiles/')
+    created_at = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
  
@@ -61,7 +63,7 @@ class Member(AbstractBaseUser, PermissionsMixin):
 
     @property
     def age(self):
-        return int((datetime.now().date() - self.birth_date).days / 365.25)
+        return int((datetime.now().date() - self.birthdate).days / 365.25)
 
     def full_name(self):
         return self.first_name + " " + self.last_name

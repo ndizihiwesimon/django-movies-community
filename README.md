@@ -6,3 +6,4 @@ This is Movies community web application in Django that  allows users to registe
 - Pip freeze the requirements
 - Create project
 - Started app member
+- Registered member in installed app

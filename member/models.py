@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.db import models
 
 # Create your models here.
@@ -42,12 +43,13 @@ class UserManager(BaseUserManager):
 
 
 
-class CustomUser(AbstractBaseUser, PermissionsMixin):
+class Member(AbstractBaseUser, PermissionsMixin):
     """Custom user model that support using email instead of username"""
     email = models.EmailField(max_length=255, unique=True)
     first_name = models.CharField(max_length=100, blank=False, null=False)
     last_name = models.CharField(max_length=100, blank=False, null=False)
     gender =  models.CharField( max_length=100,choices=Gender,blank=False, null=False)
+    dob = models.DateField(null=False, blank=False)
     telephone = models.CharField(max_length=20, blank=False, null=False)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
@@ -56,6 +58,10 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
+
+    @property
+    def age(self):
+        return int((datetime.now().date() - self.birth_date).days / 365.25)
 
     def full_name(self):
         return self.first_name + " " + self.last_name

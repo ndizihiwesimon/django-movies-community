@@ -11,3 +11,4 @@ This is Movies community web application in Django that  allows users to registe
 - Updated requirements
 - Setup database
 - Installed database requirements and updated requirements.txt
+- Views for authentication

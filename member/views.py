@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import auth
+from django.contrib.auth import get_user_model
 
 # Create your views here.
 
+User = get_user_model()
 
 def register(request):
     if request.method == 'POST':
@@ -34,7 +36,7 @@ def register(request):
             print('Password not matching')
         return redirect('/')
     else:
-        return render(request, "Dashboard/register.html")
+        return render(request, "auth/register.html")
 
 
 def login(request):
@@ -45,7 +47,6 @@ def login(request):
 
         if user is not None:
             auth.login(request, user)
-            messages.success(request, 'Logged in successfully')
             print('Logged in successful')
             return redirect('dashboard')
         else:
@@ -53,4 +54,4 @@ def login(request):
             return redirect('login')
 
     else:
-        return render(request, "Dashboard/login.html")
+        return render(request, "movies/login.html")

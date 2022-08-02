@@ -54,4 +54,4 @@ def login(request):
             return redirect('login')
 
     else:
-        return render(request, "movies/login.html")
+        return render(request, "auth/login.html")

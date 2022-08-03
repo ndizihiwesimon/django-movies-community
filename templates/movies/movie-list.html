@@ -6,7 +6,7 @@ Post list
 {% block content %}
 
 			<main class="content">
-                {% if blogs %}
+                {% if movies %}
 				<div class="container-fluid p-0">
 					<div class="mb-3">
 						<h1 class="h3 d-inline align-middle">Movies</h1>
@@ -14,18 +14,18 @@ Post list
 					</div>
 					<div class="row">
 
-     {% for blog in blogs %}
+     {% for movie in movies %}
 						<div class="col-md-3 d-flex align-items-stretch">
 							<div class="card">
-                                <a href="blog-details/{{ blog.id }}">
-								<img class="card-img-top" src="{{ blog.Poster.url }}" alt="Poster">
+                                <a href="movie-detail/{{ movie.id }}">
+								<img class="card-img-top" src="{{ movie.poster.url }}" alt="Poster">
                                 </a>
 								<div class="card-header">
-									<h4 class="card-title text-warning">{{ blog.title }}</h4>
+									<h4 class="card-title text-warning">{{ movie.title }}</h4>
 								</div>
 								<div class="card-body">
-                                    <p class="card-text text-dark pt-0">{{ blog.description|truncatechars:100 }}</p>
-									<strong><p class="card-text text-primary">{{ blog.genre }} - {{ blog.created_at }}</p></strong>
+                                    <p class="card-text text-dark pt-0">{{ movie.description|truncatechars:100 }}</p>
+									<strong><p class="card-text text-primary">{{ movie.genre }} - {{ movie.created_at }}</p></strong>
 								</div>
 							</div>
 						</div>

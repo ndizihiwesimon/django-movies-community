@@ -44,10 +44,12 @@ def login(request):
         if user is not None:
             auth.login(request, user)
             print('Logged in successful')
-            return redirect('dashboard')
+            return redirect('movie-list')
         else:
             print('Invalid credentials')
             return redirect('login')
-
     else:
         return render(request, "auth/login.html")
+
+def logout(request):
+    pass

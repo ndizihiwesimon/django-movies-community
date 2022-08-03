@@ -1,13 +1,45 @@
 from operator import attrgetter
 from django.db.models import Q
 from django.shortcuts import render, redirect
+from movie.forms import MovieForm
 from movie.models import Comment, Movie
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+@login_required
+def movie_create(request):
+    form = MovieForm()
+    context = {
+        "form": form,
+    }
+    if request.method == 'POST':
+        movie_form = MovieForm(request.POST, request.FILES)
+        if movie_form.is_valid():
+            movie_post = movie_form.save(commit=False)
+            movie_post.author = request.user
+            movie_post.save()
+
+            print()
+            print()
+            print("Saved successfully")
+            print()
+            return redirect('movie-list')
+        else:
+            context = {
+                "form": movie_form,
+                "errors": movie_form.errors,
+            }
+            print()
+            print()
+            print("Error cannot submit form")
+            print()
+            return render(request, 'movies/movie-create.html', context)
+    return render(request, 'movies/movie-create.html', context)
+
+
 def movie_list(request):
     context = {}
-
     query = ""
     if request.GET:
         query = request.GET['q']
@@ -56,3 +88,4 @@ def movie_search(query=None):
             queryset.append(post)
 
     return list(set(queryset))
+

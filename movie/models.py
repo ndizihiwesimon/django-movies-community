@@ -7,7 +7,7 @@ User = get_user_model()
 class Movie(models.Model):
     title = models.CharField(max_length=255, blank=False)
     description = models.TextField(blank=False)
-    poster = models.ImageField(upload_to="Posters/")
+    poster = models.ImageField(upload_to="posters/")
     genre = models.CharField(max_length=100, blank=False)
     actors = models.CharField(max_length=100, blank=False)
     trailer = models.URLField()
@@ -16,7 +16,6 @@ class Movie(models.Model):
 
     def __str__(self):
         return self.title
-
 
 class Comment(models.Model):
     body = models.TextField(null=False)

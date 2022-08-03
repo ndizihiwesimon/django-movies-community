@@ -95,7 +95,7 @@ Post list
                                 {% for rel in related %}
                                   <div class="col-md-4 mt-0">
                                     <div class="card h-150">
-                                        <a href="{% url 'movie-list' %}{{ rel.id }}">  <img src="{{ rel.poster.url }}" class="card-img img-thumbnail" alt="..."> </a>
+                                        <a href="{% url 'movie-list' %}{{ rel.id }}">  <img src="{{ rel.poster.url }}" class="card-img img-thumbnail" alt="{{ details.title }}"> </a>
                                     </div>
                                   </div>
                               {% endfor %}
@@ -103,7 +103,7 @@ Post list
                                 <div class="col-12 mt-0 text-nowrap">
                                 <h4>No related posts...</h4>
                                 </div>
-{% endif %}
+                              {% endif %}
                                 </div>
 
                         </div>

@@ -15,17 +15,17 @@ Post list
                         <!-- Post header-->
                         <header class="mb-4">
                             <!-- Post title-->
-                            <h1 class="fw-bolder mb-1">{{ details.Title }}</h1>
+                            <h1 class="fw-bolder mb-1">{{ details.title }}</h1>
                             <!-- Post meta content-->
-                            <div class="text-muted fst-italic mb-2">Posted on  January 1, 2021 by {{ details.Author }}</div>
+                            <div class="text-muted fst-italic mb-2">Posted on  January 1, 2021 by {{ details.author }}</div>
                             <!-- Post categories-->
-                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">{{ details.Genre }}</a>
+                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">{{ details.genre }}</a>
                         </header>
                         <!-- Preview image figure-->
-                        <figure class="mb-4"><img class="img-fluid rounded" src="{{ details.Poster.url }}" alt="..." /></figure>
+                        <figure class="mb-4"><img class="img-fluid rounded" src="{{ details.poster.url }}" alt="..." /></figure>
                         <!-- Post content-->
                         <section class="mb-5">
-                            <p class="fs-5 mb-4 text-dark"> {{ details.Description }}</p>
+                            <p class="fs-5 mb-4 text-dark"> {{ details.description }}</p>
                         </section>
                     </article>
                      <!-- Comments section-->
@@ -35,10 +35,6 @@ Post list
                                 <!-- Comment form-->
                                 <form class="mb-4" method="post">
                                     {% csrf_token %}
-                                    <div class="form-group">
-                                        <label for="names" class="form-label">Names</label>
-                                        <input type="text" class="form-control" name="names" placeholder="Enter your names" required>
-                                    </div>
                                    <div class="form-group mt-3" >
                                        <label for="comment" class="mb-1">Comment</label>
                                        <textarea required class="form-control" name="comment" rows="3" placeholder="Join the discussion and leave a comment!"></textarea>
@@ -53,11 +49,11 @@ Post list
                                 <div class="d-flex">
                                     <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
                                     <div class="ms-3">
-                                        <div class="fw-bold">{{ comment.Names }}</div>
-                                       {{ comment.Feedback }}
+                                        <div class="fw-bold">{{ comment.user.first_name }}</div>
+                                       {{ comment.body }}
                                         <div class="text-warning">
                                            <small>
-                                            {{ comment.Commented_on }}
+                                            {{ comment.commented_on }}
                                         </small>
                                         </div>
 
@@ -88,7 +84,7 @@ Post list
                                 {% for rel in related %}
                                   <div class="col-md-4 mt-0">
                                     <div class="card h-150">
-                                        <a href="{{ rel.id }}">  <img src="{{ rel.Poster.url }}" class="card-img img-thumbnail" alt="..."> </a>
+                                        <a href="{{ rel.id }}">  <img src="{{ rel.poster.url }}" class="card-img img-thumbnail" alt="..."> </a>
                                     </div>
                                   </div>
                               {% endfor %}
@@ -103,12 +99,12 @@ Post list
                     </div>
                     <!-- Categories widget-->
                     <div class="card mb-4">
-                        <div class="card-header">Blog Categories</div>
+                        <div class="card-header">Movie Categories</div>
                         <div class="card-body">
                             <div class="row">{% for cat in cats %}
                                 <div class="col-6">
                                     <ul class="list-unstyled mb-0">
-                                        <li><a href="{% url 'blog' %}?q={{ cat.Genre }}">{{ cat.Genre }}</a></li>
+                                        <li><a href="{% url 'movie-list' %}?q={{ cat.genre }}">{{ cat.genre }}</a></li>
                                     </ul>
                                 </div>
                                 {% endfor %}

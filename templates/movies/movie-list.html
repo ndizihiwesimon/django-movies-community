@@ -17,7 +17,7 @@ Post list
      {% for movie in movies %}
 						<div class="col-md-3 d-flex align-items-stretch">
 							<div class="card">
-                                <a href="movie-detail/{{ movie.id }}">
+                                <a href="{{ movie.id }}">
 								<img class="card-img-top" src="{{ movie.poster.url }}" alt="Poster">
                                 </a>
 								<div class="card-header">

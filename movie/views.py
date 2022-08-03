@@ -51,12 +51,12 @@ def movie_list(request):
     return render(request, "movies/movie-list.html", context)
 
 
-def movie_detail(request, bid):
-    context = Movie.objects.get(id=bid)
-    Ge = context.Genre
-    context2 = Movie.objects.filter(Genre=Ge).exclude(id=bid)
-    context3 = Movie.objects.order_by('Genre').distinct('Genre')
-    context4 = Comment.objects.filter(Movie=bid)
+def movie_detail(request, pk):
+    context = Movie.objects.get(id=pk)
+    Ge = context.genre
+    context2 = Movie.objects.filter(genre=Ge).exclude(id=pk)
+    context3 = Movie.objects.order_by('genre').distinct('genre')
+    context4 = Comment.objects.filter(movie=pk)
     both = {'related': context2, 'details': context,
             'cats': context3, 'comments': context4}
 

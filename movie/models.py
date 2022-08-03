@@ -1,3 +1,4 @@
+from enum import auto
 from django.db import models
 from django.contrib.auth import get_user_model
 
@@ -19,6 +20,7 @@ class Movie(models.Model):
 
 class Comment(models.Model):
     body = models.TextField(null=False)
+    commented_on = models.DateTimeField(auto_now_add=True)
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name='comments')
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
 

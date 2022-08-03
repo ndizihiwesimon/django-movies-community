@@ -13,7 +13,7 @@ class MovieForm(forms.ModelForm):
         attrs={'class': 'form-control', 'placeholder': 'Genre'}))
     trailer = forms.CharField(max_length=255, required=True, widget=forms.widgets.Input(
         attrs={'class': 'form-control', 'placeholder': 'Movie trailer link'}))
-    poster = forms.CharField(max_length=255, required=True, widget=forms.widgets.FileInput(
+    poster = forms.ImageField(max_length=255, required=True, widget=forms.widgets.FileInput(
         attrs={'class': 'form-control', 'placeholder': 'Blog title'}))
 
     class Meta:

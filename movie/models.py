@@ -20,7 +20,8 @@ class Movie(models.Model):
 
 class Comment(models.Model):
     body = models.TextField(null=False)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name='comments')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
 
     def __str__(self):
         return self.body

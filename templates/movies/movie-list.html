@@ -21,11 +21,11 @@ Post list
 								<img class="card-img-top" src="{{ blog.Poster.url }}" alt="Poster">
                                 </a>
 								<div class="card-header">
-									<h4 class="card-title text-warning">{{ blog.Title }}</h4>
+									<h4 class="card-title text-warning">{{ blog.title }}</h4>
 								</div>
 								<div class="card-body">
-                                    <p class="card-text text-dark pt-0">{{ blog.Description|truncatechars:100 }}</p>
-									<strong><p class="card-text text-primary">{{ blog.Genre }} - {{ blog.Release }}</p></strong>
+                                    <p class="card-text text-dark pt-0">{{ blog.description|truncatechars:100 }}</p>
+									<strong><p class="card-text text-primary">{{ blog.genre }} - {{ blog.created_at }}</p></strong>
 								</div>
 							</div>
 						</div>

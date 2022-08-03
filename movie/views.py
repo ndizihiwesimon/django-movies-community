@@ -13,13 +13,13 @@ def movie_list(request):
         query = request.GET['q']
         context['query'] = str(query)
 
-    Movies = sorted(movie_search(query), key=attrgetter(
+    movies = sorted(movie_search(query), key=attrgetter(
         'created_at'), reverse=True)
-    context['Movies'] = Movies
-    return render(request, "movie/movie-list.html", context)
+    context['movies'] = movies
+    return render(request, "movies/movie-list.html", context)
 
 
-def movie_details(request, bid):
+def movie_detail(request, bid):
     context = Movie.objects.get(id=bid)
     Ge = context.Genre
     context2 = Movie.objects.filter(Genre=Ge).exclude(id=bid)
@@ -31,15 +31,15 @@ def movie_details(request, bid):
     if request.method == 'POST':
         if request.POST.get('names') and request.POST.get('comment'):
             saveComment = Comment()
-            saveComment.Names = request.POST['names']
-            saveComment.Feedback = request.POST['comment']
-            saveComment.Movie = context
+            saveComment.user = request.user
+            saveComment.body = request.POST['comment']
+            saveComment.movie = context
             saveComment.save()
             print('Comment sent successfully!')
         else:
             print('Something went wrong')
-            return redirect('movie-list')
-    return render(request, "movie/movie-details.html", both)
+            return redirect('movie-detail')
+    return render(request, "movies/movie-details.html", both)
 
 
 def movie_search(query=None):

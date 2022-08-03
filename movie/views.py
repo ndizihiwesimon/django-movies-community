@@ -1,7 +1,7 @@
 from operator import attrgetter
 from django.db.models import Q
 from django.shortcuts import render, redirect
-from movie.models import Movie
+from movie.models import Comment, Movie
 
 # Create your views here.
 
@@ -14,7 +14,7 @@ def movie_list(request):
         query = request.GET['q']
         context['query'] = str(query)
 
-    Movies = sorted(Moviesearch(query), key=attrgetter(
+    Movies = sorted(movie_search(query), key=attrgetter(
         'created_at'), reverse=True)
     context['Movies'] = Movies
     return render(request, "Movie/movie-list.html", context)

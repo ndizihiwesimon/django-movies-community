@@ -6,7 +6,7 @@ User = get_user_model()
 # Create your models here.
 class Movie(models.Model):
     title = models.CharField(max_length=255, blank=False)
-    body = models.TextField(blank=False)
+    description = models.TextField(blank=False)
     poster = models.ImageField(upload_to="Posters/")
     genre = models.CharField(max_length=100, blank=False)
     actors = models.CharField(max_length=100, blank=False)
@@ -16,3 +16,11 @@ class Movie(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Comment(models.Model):
+    body = models.TextField(null=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.body

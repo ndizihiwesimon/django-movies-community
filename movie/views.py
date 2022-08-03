@@ -5,7 +5,6 @@ from movie.models import Comment, Movie
 
 # Create your views here.
 
-
 def movie_list(request):
     context = {}
 
@@ -17,7 +16,7 @@ def movie_list(request):
     Movies = sorted(movie_search(query), key=attrgetter(
         'created_at'), reverse=True)
     context['Movies'] = Movies
-    return render(request, "Movie/movie-list.html", context)
+    return render(request, "movie/movie-list.html", context)
 
 
 def movie_details(request, bid):
@@ -40,7 +39,7 @@ def movie_details(request, bid):
         else:
             print('Something went wrong')
             return redirect('movie-list')
-    return render(request, "Movie/movie-details.html", both)
+    return render(request, "movie/movie-details.html", both)
 
 
 def movie_search(query=None):
@@ -48,9 +47,9 @@ def movie_search(query=None):
     queries = query.split(", ")
     for q in queries:
         posts = Movie.objects.filter(
-            Q(Title__icontains=q) |
-            Q(Description__icontains=q) |
-            Q(Genre__icontains=q)
+            Q(title__icontains=q) |
+            Q(description__icontains=q) |
+            Q(genre__icontains=q)
         ).distinct()
 
         for post in posts:

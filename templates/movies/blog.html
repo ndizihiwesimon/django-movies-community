@@ -1,0 +1,55 @@
+{% extends '../visitor-base.html' %}
+
+{% block title %}
+Post list
+{% endblock %}
+{% block content %}
+
+			<main class="content">
+                {% if blogs %}
+				<div class="container-fluid p-0">
+					<div class="mb-3">
+						<h1 class="h3 d-inline align-middle">Movies</h1>
+						<small class="badge bg-dark text-white ms-2">Latest</small>
+					</div>
+					<div class="row">
+
+     {% for blog in blogs %}
+						<div class="col-md-3 d-flex align-items-stretch">
+							<div class="card">
+                                <a href="blog-details/{{ blog.id }}">
+								<img class="card-img-top" src="{{ blog.Poster.url }}" alt="Poster">
+                                </a>
+								<div class="card-header">
+									<h4 class="card-title text-warning">{{ blog.Title }}</h4>
+								</div>
+								<div class="card-body">
+                                    <p class="card-text text-dark pt-0">{{ blog.Description|truncatechars:100 }}</p>
+									<strong><p class="card-text text-primary">{{ blog.Genre }} - {{ blog.Release }}</p></strong>
+								</div>
+							</div>
+						</div>
+     {% endfor %}
+
+						</div>
+				</div>
+                {% else %}
+            	<div class="container-fluid p-0">
+                    <div class="row">
+                        <div class="card m-auto">
+                            <div class="card-body mt-2 mb-2">
+                                <h2 class="card-title text-dark">
+                                    No results
+                                </h2>
+                                <p class="card-text">
+                                    There were no results matching your search: "{{ query }}".
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    {% endif %}
+			</main>
+
+
+{% endblock %}

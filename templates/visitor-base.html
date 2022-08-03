@@ -1,0 +1,82 @@
+ {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>{%block title %} {% endblock %}- Movie Community</title>
+    <link rel="icon" href="{% static 'Core/images/icons/icon.png' %}" type="image/x-icon">
+<link rel="stylesheet" href="{% static 'css/app.css' %}">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<!-- NAVBAR GOES HERE -->
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="container-fluid">
+			  <a class="navbar-brand" href="{% url 'home' %}">Cinemania</a>
+		  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		  </button>
+
+		  <div class="collapse navbar-collapse" id="navbarColor03">
+			<ul class="navbar-nav me-auto">
+			  <li class="nav-item">
+				<a class="nav-link" href="{% url 'home' %}">Home
+				</a>
+			  </li>
+                <li class="nav-item">
+				<a class="nav-link active" href="{% url 'blog' %}">Blog
+				</a>
+			  </li>
+			</ul>
+			<form class="d-flex" action="{% url 'blog' %}" method="get">
+			  <input class="form-control me-sm-2" type="text" name="q" id="id_q" placeholder="Search...">
+
+			  <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+			</form>
+		  </div>
+		</div>
+	  </nav>
+
+	<!-- NAVBAR END HERE -->
+
+
+
+    {% block content %}
+
+    {% endblock %}
+
+			<footer class="footer">
+				<div class="container-fluid">
+					<div class="row text-muted">
+						<div class="col-6 text-start">
+							<p class="mb-0">
+								<a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>Ndizihiwe and Patience</strong></a> &copy; Cinemania</p>
+						</div>
+						<div class="col-6 text-end">
+							<ul class="list-inline">
+								<li class="list-inline-item">
+									<a class="text-muted" href="https://adminkit.io/" target="_blank">Support</a>
+								</li>
+								<li class="list-inline-item">
+									<a class="text-muted" href="https://adminkit.io/" target="_blank">Help Center</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+</div>
+
+<script src="{% static 'js/app.js' %}"></script>
+
+    <script type="text/javascript">
+        document.getElementById("id_q").value="{{ query }}"
+    </script>
+
+</body>
+</html>

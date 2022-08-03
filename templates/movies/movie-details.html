@@ -22,14 +22,19 @@ Post list
                             <a class="badge bg-secondary text-decoration-none link-light" href="#!">{{ details.genre }}</a>
                         </header>
                         <!-- Preview image figure-->
-                        <figure class="mb-4"><img class="img-fluid rounded" src="{{ details.poster.url }}" alt="..." /></figure>
+                        <figure class="mb-4"><img class="img-fluid rounded" src="{{ details.poster.url }}" alt="{{ details.title }}" /></figure>
                         <!-- Post content-->
-                        <section class="mb-5">
+                        <section class="mb-2">
                             <p class="fs-5 mb-4 text-dark"> {{ details.description }}</p>
                         </section>
+                         <!-- ,Main actors -->
+                        <section class="mb-2">
+                            <h4>Main Actors</h4>
+                            <p>{{ details.actors }}</p> 
+                        </section>
                         <!-- Trailer content -->
-                        <section class="mb-5">
-                            <h3>Trailer</h3>
+                        <section class="mb-2">
+                            <h4>Trailer</h4>
                             <a href="{{ details.trailer }}" target="_blank" alt="Trailer link" />Click to watch trailer</a> 
                         </section>
                         

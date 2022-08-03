@@ -32,26 +32,30 @@ Register
                                                 <input class="form-control form-control-md" type="text" name="Lastname" placeholder="Enter your lastname" required/>
                                             </div>
                                         </div>
-                                        <div class="mb-3">
-											<label class="form-label">Username</label>
-											<input class="form-control form-control-md" type="text" name="Username" placeholder="Enter username" required/>
-										</div>
+                                        
 										<div class="mb-3">
 											<label class="form-label">Email</label>
 											<input class="form-control form-control-md" type="email" name="Email" placeholder="Enter your email" required/>
 										</div>
 										<div class="mb-3">
+											<label class="form-label">Gender</label>
+											<select name="Gender" id="Gender" class="form-control form-control-md">
+												<option value="">Select</option>
+												<option value="MALE">Male</option>
+												<option value="FEMALE">Female</option>
+												<option value="PREFER_NOT_SAY"></option>
+											</select>
+										</div>
+										<div class="mb-3">
+											<label class="form-label">Birth Date</label>
+											<input class="form-control form-control-md" type="date" name="Dob" />
+										</div>
+										<div class="mb-3">
 											<label class="form-label">Photo</label>
 											<input class="form-control form-control-md" type="file" name="Photo" />
 										</div>
-										<div class="mb-3">
-											<label class="form-label">Title</label>
-											<input class="form-control form-control-md" type="text" name="Title" placeholder="Enter your title" required/>
-										</div>
-										<div class="mb-3">
-											<label class="form-label">About</label>
-                                            <textarea class="form-control form-control-md" name="About" placeholder="Tell us about you..."  id="" cols="30" rows="5" required></textarea>
-										</div>
+										
+										
 										<div class="mb-3">
 											<label class="form-label">Password</label>
 											<input class="form-control form-control-md" type="password" name="Password1" placeholder="Enter password" required/>

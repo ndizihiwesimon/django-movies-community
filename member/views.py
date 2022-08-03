@@ -10,11 +10,10 @@ def register(request):
     if request.method == 'POST':
         first_name = request.POST['Firstname']
         last_name = request.POST['Lastname']
-        username = request.POST['Username']
         email = request.POST['Email']
         photo = request.FILES['Photo']
-        title = request.POST['Title']
-        about = request.POST['About']
+        gender = request.POST['Gender']
+        birthdate = request.POST['Dob']
         password1 = request.POST['Password1']
         password2 = request.POST['Password2']
 
@@ -22,13 +21,10 @@ def register(request):
             if User.objects.filter(email=email).exists():
                 print('Email already exists')
                 return redirect('register')
-            elif User.objects.filter(username=username).exists():
-                print('Username already taken')
-                return redirect('register')
             else:
-                user = User.objects.create_user(email=email, username=username, password=password1,
-                                                first_name=first_name, last_name=last_name, photo=photo, title=title,
-                                                about=about)
+                user = User.objects.create_user(email=email, password=password1,
+                                                first_name=first_name, last_name=last_name, photo=photo, gender=gender,
+                                                birthdate=birthdate)
                 user.save()
                 print('User created successfully')
                 return redirect('login')

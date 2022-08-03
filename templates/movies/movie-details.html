@@ -27,6 +27,12 @@ Post list
                         <section class="mb-5">
                             <p class="fs-5 mb-4 text-dark"> {{ details.description }}</p>
                         </section>
+                        <!-- Trailer content -->
+                        <section class="mb-5">
+                            <h3>Trailer</h3>
+                            <a href="{{ details.trailer }}" target="_blank" alt="Trailer link" />Click to watch trailer</a> 
+                        </section>
+                        
                     </article>
                      <!-- Comments section-->
                     <section class="mb-5">
@@ -84,7 +90,7 @@ Post list
                                 {% for rel in related %}
                                   <div class="col-md-4 mt-0">
                                     <div class="card h-150">
-                                        <a href="{{ rel.id }}">  <img src="{{ rel.poster.url }}" class="card-img img-thumbnail" alt="..."> </a>
+                                        <a href="{% url 'movie-list' %}{{ rel.id }}">  <img src="{{ rel.poster.url }}" class="card-img img-thumbnail" alt="..."> </a>
                                     </div>
                                   </div>
                               {% endfor %}

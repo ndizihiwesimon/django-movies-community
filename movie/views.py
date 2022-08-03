@@ -61,7 +61,7 @@ def movie_detail(request, pk):
             'cats': context3, 'comments': context4}
 
     if request.method == 'POST':
-        if request.POST.get('names') and request.POST.get('comment'):
+        if request.POST.get('comment'):
             saveComment = Comment()
             saveComment.user = request.user
             saveComment.body = request.POST['comment']
